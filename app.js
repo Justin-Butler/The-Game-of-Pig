@@ -39,9 +39,10 @@ function gameOverChecker() {
 function rollDice() {
   var result = Math.floor(Math.random() * 7);
   var diceImg = 1;
-  var anim = setInterval(frame, 200);
+  var anim = setInterval(frame, 50);
   function frame() {
     if (diceImg > 6){
+      dice.src = "dice/dice-" + result + ".png";
       clearInterval(anim);
     }
     else {
@@ -49,7 +50,6 @@ function rollDice() {
       diceImg++;
     }
   }
-  dice.src = "dice/dice-" + result + ".png";
   return result;
 }
 //Calls Dice Roll Function and uses the result to update the score of the player.
