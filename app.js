@@ -37,7 +37,7 @@ function gameOverChecker() {
 }
 //Randomizes a number from 1-6 as the die is six sided. Performs Animation and then displays the result to the player and returns the value of the die.
 function rollDice() {
-  var result = Math.floor(Math.random() * 7);
+  var result = Math.floor(Math.random() * 6) + 1;
   var diceImg = 1;
   var anim = setInterval(frame, 50);
   function frame() {
