@@ -45,11 +45,11 @@ function rollDice() {
       clearInterval(anim);
     }
     else {
-      dice.src = "dice/dice-" + diceImg + ".png";
+      dice.src = "dice\dice-" + diceImg + ".png";
       diceImg++;
     }
   }
-  dice.src = "dice/dice-" + result + ".png";
+  dice.src = "dice\dice-" + result + ".png";
   return result;
 }
 //Calls Dice Roll Function and uses the result to update the score of the player.
