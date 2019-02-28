@@ -11,13 +11,13 @@ GAME RULES:
 //Updates the GUI for the Turn Change
 function turnChange() {
   if (turnTracker === 1) {
-    playerOneName.classList.remove("active");
-    playerTwoName.classList.add("active");
+    playerOneName[0].classList.remove("active");
+    playerTwoName[0].classList.add("active");
     turnTracker = 2;
   }
   else {
-    playerTwoName.classList.remove("active");
-    playerOneName.classList.add("active");
+    playerTwoName[0].classList.remove("active");
+    playerOneName[0].classList.add("active");
     turnTracker = 1;
   }
 }
@@ -37,7 +37,7 @@ function gameOverChecker() {
 }
 //Randomizes a number from 1-6 as the die is six sided. Performs Animation and then displays the result to the player and returns the value of the die.
 function rollDice() {
-  var result = Math.round(Math.random() * 7);
+  var result = Math.floor(Math.random() * 7);
   var diceImg = 1;
   var anim = setInterval(frame, 200);
   function frame() {
@@ -45,11 +45,11 @@ function rollDice() {
       clearInterval(anim);
     }
     else {
-      dice.src = "dice\dice-" + diceImg + ".png";
+      dice.src = "dice/dice-" + diceImg + ".png";
       diceImg++;
     }
   }
-  dice.src = "dice\dice-" + result + ".png";
+  dice.src = "dice/dice-" + result + ".png";
   return result;
 }
 //Calls Dice Roll Function and uses the result to update the score of the player.
@@ -72,11 +72,11 @@ function answerCheck() {
     //If a number above 1 is rolled
     else {
       if (turnTracker === 1) {
-        playerOne.tempScore = this + roll;
+        playerOne.tempScore = playerOne.tempScore + roll;
         playerOneTempScore.innerHTML = playerOne.tempScore;
       }
       else {
-        playerTwo.tempScore = this + roll;
+        playerTwo.tempScore = playerTwo.tempScore + roll;
         playerTwoTempScore.innerHTML = playerTwo.tempScore;
       }
     }
@@ -86,18 +86,18 @@ function answerCheck() {
 function holdScore() {
   if (!gameOver) {
     if (turnTracker === 1) {
-      playerOne.heldScore = this + playerOne.tempScore;
+      playerOne.heldScore = playerOne.heldScore + playerOne.tempScore;
       playerOne.tempScore = 0;
       playerOneTempScore.innerHTML = playerOne.tempScore;
       playerOneHeldScore.innerHTML = playerOne.heldScore;
     }
     else {
-      playerTwo.heldScore = this + playerTwo.tempScore;
+      playerTwo.heldScore = playerTwo.heldScore + playerTwo.tempScore;
       playerTwo.tempScore = 0;
       playerTwoTempScore.innerHTML = playerTwo.tempScore;
       playerTwoHeldScore.innerHTML = playerTwo.heldScore;
     }
-    gameOverCheck();
+    gameOverChecker();
   }
 }
 //New Game Function
@@ -135,10 +135,10 @@ var playerOneHeldScore = document.getElementById("score-0");
 var playerOneTempScore = document.getElementById("current-0");
 var playerTwoHeldScore = document.getElementById("score-1");
 var playerTwoTempScore = document.getElementById("current-1");
-var dice = document.getElementsByClassName("dice");
-var newGameBtn = document.getElementsByClassName("btn-new");
-var rollDiceBtn = document.getElementsByClassName("btn-roll");
-var holdBtn = document.getElementsByClassName("btn-hold");
+var dice = document.getElementById("die");
+var newGameBtn = document.getElementById("newGameBtn");
+var rollDiceBtn = document.getElementById("rollDiceBtn");
+var holdBtn = document.getElementById("holdBtn");
 
 //Other Global Variables 
 var turnTracker = 1;
