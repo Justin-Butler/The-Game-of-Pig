@@ -105,7 +105,7 @@ function newGame() {
   playerOne.tempScore = 0;
   playerOne.heldScore = 0;
   playerTwo.tempScore = 0;
-  playerTwo.tempScore = 0;
+  playerTwo.heldScore = 0;
   playerOneTempScore.innerHTML = playerOne.tempScore;
   playerOneHeldScore.innerHTML = playerOne.heldScore;
   playerTwoTempScore.innerHTML = playerTwo.tempScore;
