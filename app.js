@@ -25,6 +25,12 @@ function turnChange() {
 function gameOverChecker() {
   if (playerOne.heldScore >= 100 || playerTwo.heldScore >= 100) {
     gameOver = true;
+    if (playerOne.heldScore >= 100) {
+      playerOneName[0].classList.add("winner");
+    }
+    else {
+      playerTwoName[0].classList.add("winner");
+    }
   }
   else {
     if (turnTracker === 1) {
@@ -54,9 +60,9 @@ function rollDice() {
 }
 //Calls Dice Roll Function and uses the result to update the score of the player.
 function answerCheck() {
-  window.setTimeout(function(){
-      if (!gameOver){
-        var roll = rollDice();
+  if (!gameOver){
+    var roll = rollDice();
+    window.setTimeout(function(){
         //If a 1 is rolled
         if (roll === 1) {
           if (turnTracker === 1) {
@@ -81,8 +87,8 @@ function answerCheck() {
             playerTwoTempScore.innerHTML = playerTwo.tempScore;
           }
         }
-     }
-  }, 1000)  
+    }, 1050);  
+  } 
 }
 //Adds the Value of the Temp Score to the Held Score and checks if the game is won.
 function holdScore() {
@@ -112,6 +118,8 @@ function newGame() {
   playerOneHeldScore.innerHTML = playerOne.heldScore;
   playerTwoTempScore.innerHTML = playerTwo.tempScore;
   playerTwoHeldScore.innerHTML = playerTwo.heldScore;
+  playerOneName[0].classList.remove("winner");
+  playerTwoName[0].classList.remove("winner");
   gameOver = false;
   if (turnTracker === 2) {
     turnChange();
