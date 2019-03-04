@@ -39,7 +39,7 @@ function gameOverChecker() {
 function rollDice() {
   var result = Math.floor(Math.random() * 6) + 1;
   var diceImg = 1;
-  var anim = setInterval(frame, 50);
+  var anim = setInterval(frame, 166);
   function frame() {
     if (diceImg > 6){
       dice.src = "dice/dice-" + result + ".png";
@@ -54,33 +54,35 @@ function rollDice() {
 }
 //Calls Dice Roll Function and uses the result to update the score of the player.
 function answerCheck() {
-  if (!gameOver){
-    var roll = rollDice();
-    //If a 1 is rolled
-    if (roll === 1) {
-      if (turnTracker === 1) {
-        playerOne.tempScore = 0;
-        playerOneTempScore.innerHTML = playerOne.tempScore;
-        turnChange();
-      }
-      else {
-        playerTwo.tempScore = 0;
-        playerTwoTempScore.innerHTML = playerTwo.tempScore;
-        turnChange();
-      }
-    }
-    //If a number above 1 is rolled
-    else {
-      if (turnTracker === 1) {
-        playerOne.tempScore = playerOne.tempScore + roll;
-        playerOneTempScore.innerHTML = playerOne.tempScore;
-      }
-      else {
-        playerTwo.tempScore = playerTwo.tempScore + roll;
-        playerTwoTempScore.innerHTML = playerTwo.tempScore;
-      }
-    }
-  } 
+  window.setTimeout(function(){
+      if (!gameOver){
+        var roll = rollDice();
+        //If a 1 is rolled
+        if (roll === 1) {
+          if (turnTracker === 1) {
+            playerOne.tempScore = 0;
+            playerOneTempScore.innerHTML = playerOne.tempScore;
+            turnChange();
+          }
+          else {
+            playerTwo.tempScore = 0;
+            playerTwoTempScore.innerHTML = playerTwo.tempScore;
+            turnChange();
+          }
+        }
+        //If a number above 1 is rolled
+        else {
+          if (turnTracker === 1) {
+            playerOne.tempScore = playerOne.tempScore + roll;
+            playerOneTempScore.innerHTML = playerOne.tempScore;
+          }
+          else {
+            playerTwo.tempScore = playerTwo.tempScore + roll;
+            playerTwoTempScore.innerHTML = playerTwo.tempScore;
+          }
+        }
+     }
+  }, 1000)  
 }
 //Adds the Value of the Temp Score to the Held Score and checks if the game is won.
 function holdScore() {
