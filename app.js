@@ -61,6 +61,7 @@ function rollDice() {
 //Calls Dice Roll Function and uses the result to update the score of the player.
 function answerCheck() {
   if (!gameOver){
+    rollDiceBtn.removeEventListener("click", answerCheck);
     var roll = rollDice();
     window.setTimeout(function(){
         //If a 1 is rolled
@@ -87,6 +88,7 @@ function answerCheck() {
             playerTwoTempScore.innerHTML = playerTwo.tempScore;
           }
         }
+      rollDiceBtn.addEventListener("click", answerCheck);
     }, 1050);  
   } 
 }
